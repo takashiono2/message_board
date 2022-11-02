@@ -31,7 +31,7 @@ public class CreateServlet extends HttpServlet {
             em.getTransaction().begin();
 
             Message m = new Message();
-
+            
             String title = request.getParameter("title");
             m.setTitle(title);
 
