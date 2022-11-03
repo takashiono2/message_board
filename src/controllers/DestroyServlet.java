@@ -26,16 +26,18 @@ public class DestroyServlet extends HttpServlet {
         if (_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Message m = em.find(Message.class, (Integer) (request.getSession().getAttribute("message_id")));
-
+            Message m = em.find(Message.class, (Integer)(request.getSession().getAttribute("message_id")));
+            
             em.getTransaction().begin();
             em.remove(m);
             em.getTransaction().commit();
             em.close();
-
+                        
             request.getSession().removeAttribute("message_id");
             
             response.sendRedirect(request.getContextPath() + "/index");
+            
+            
         }
     }
 }
